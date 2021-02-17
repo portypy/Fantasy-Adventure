@@ -1,4 +1,6 @@
 package warriors;
 
-public class Dwarf {
+import avatar.Avatar;
+
+public class Dwarf extends Avatar {
 }
