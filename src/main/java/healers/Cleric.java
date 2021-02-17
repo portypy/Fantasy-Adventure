@@ -2,7 +2,7 @@ package healers;
 
 import avatar.Avatar;
 
-public class Cleric extends Avatar {
+public class Cleric extends Avatar implements IHeal {
 
     private MedicineType medicineType;
 
@@ -15,6 +15,11 @@ public class Cleric extends Avatar {
         return this.medicineType;
     }
 
+    public int heal() {
+        return this.medicineType.getHealValue();
+    }
 
-
+    public void changeMedicine(MedicineType selectedMedicine) {
+        this.medicineType = selectedMedicine;
+    }
 }
