@@ -11,8 +11,7 @@ public class DwarfTest {
         
         @Before
         public void before(){
-//            dwarf = new Dwarf("Hamlett", 100, 10, WeaponType.AXE);
-            dwarf = new Dwarf("Hamlett", 100, 10);
+            dwarf = new Dwarf("Hamlett", 100, 10, WeaponType.AXE);
         }
 
 
@@ -31,8 +30,22 @@ public class DwarfTest {
                 assertEquals(10, dwarf.getCoinPurseCount());
         }
 
-//        @Test
-//        public void hasAttributeWeaponType(){
-//                assertEquals("Axe", dwarf.getNameOFWeapon());
-//        }
+        @Test
+        public void hasAttributeWeaponType(){
+                assertEquals("Axe", dwarf.getWeaponType().getName());
+        }
+
+        @Test
+        public void canAttack(){
+                assertEquals(9, dwarf.attack());
+        }
+
+        @Test
+        public void canChangeWeapon(){
+                dwarf.changeWeapon(WeaponType.AK47);
+                assertEquals("Tool", dwarf.getWeaponType().getName());
+        }
+
+
+
 }
