@@ -3,7 +3,7 @@ package avatar;
 public abstract class Avatar {
 
     private String name;
-    private int healthPoints;
+    protected int healthPoints;
     private int coinPurse;
 
     public Avatar(String name, int healthPoints, int coinPurse){

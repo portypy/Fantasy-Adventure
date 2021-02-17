@@ -14,7 +14,6 @@ public class DwarfTest {
             dwarf = new Dwarf("Hamlett", 100, 10, WeaponType.AXE);
         }
 
-
         @Test
         public void hasName(){
                 assertEquals("Hamlett", dwarf.getName());

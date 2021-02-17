@@ -1,18 +1,24 @@
 package magicians;
 
 public enum MythicalCreatures {
-    OGRE("Shrek", 30, 10),
-    DRAGON("Smaug", 50, 15),
-    ENT("Treebeard", 40, 20);
+    OGRE("Shrek", 30, 10, 3),
+    DRAGON("Smaug", 50, 15, 5),
+    ENT("Treebeard", 40, 20, 10);
 
     private final String name;
     private final int healthPoints;
-    private final int defendValue;
+    private final int attackValue;
+    private final int defBonus;
 
-    MythicalCreatures(String name, int healthPoints, int defendValue){
+    MythicalCreatures(String name, int healthPoints, int attackValue, int defBonus){
         this.name = name;
         this.healthPoints = healthPoints;
-        this.defendValue = defendValue;
+        this.attackValue = attackValue;
+        this.defBonus = defBonus;
+    }
+
+    public int getDefBonus() {
+        return defBonus;
     }
 
     public String getName(){
@@ -23,8 +29,8 @@ public enum MythicalCreatures {
         return this.healthPoints;
     }
 
-    public int getDefendValue(){
-        return this.defendValue;
+    public int getAttackValue(){
+        return this.attackValue;
     }
 
 }

@@ -15,9 +15,8 @@ public class WizardTest {
     }
 
     @Test
-//    THIS TEST MUST CHANGE TO TEST THAT WE CAN LOWER ENEMY HEALTH
-    public void canGetSpellDamage(){
-        assertEquals(5, oz.changeHP());
+    public void canGetSpellAndCreatureDamage(){
+        assertEquals(15, oz.changeHP());
     }
 
     @Test
@@ -31,7 +30,6 @@ public class WizardTest {
         oz.setMythicalCreature(MythicalCreatures.DRAGON);
         assertEquals(MythicalCreatures.DRAGON, oz.getMythicalCreature());
     }
-
 
     @Test
     public void hasMythicalCreature() {

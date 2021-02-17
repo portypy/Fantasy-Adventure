@@ -3,7 +3,6 @@ package magicians;
 import avatar.Avatar;
 import avatar.IChangeHP;
 
-
 public class Wizard extends Avatar implements IChangeHP {
 
     SpellType spellType;
@@ -21,7 +20,6 @@ public class Wizard extends Avatar implements IChangeHP {
         return spellType;
     }
 
-
     public MythicalCreatures getMythicalCreature() {
         return mythicalCreature;
     }
@@ -31,10 +29,14 @@ public class Wizard extends Avatar implements IChangeHP {
     }
 
     public int changeHP(){
-        return getSpellType().getDamageValue();
+        return (getSpellType().getDamageValue())+(getMythicalCreature().getAttackValue());
     }
 
     public void changeSpellType(SpellType selectSpell) {
         this.spellType = selectSpell;
+    }
+
+    public void removeHealthPoints(int damagePoints) {
+        this.healthPoints -= (damagePoints - getMythicalCreature().getDefBonus());
     }
 }
