@@ -25,11 +25,17 @@ public abstract class Avatar {
         return this.coinPurse;
     };
 
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
+    public void addHealthPoints(int healthPoints) {
+        this.healthPoints += healthPoints;
     }
 
-    public void setCoinPurse(int coinPurse) {
-        this.coinPurse = coinPurse;
+    public void removeHealthPoints(int damagePoints) {
+        this.healthPoints -= damagePoints;
+    }
+    public void addCoinPurse(int coinPurse) {
+        this.coinPurse += coinPurse;
+    }
+    public void removeCoinPurse(int coinPurse) {
+        this.coinPurse -= coinPurse;
     }
 }
