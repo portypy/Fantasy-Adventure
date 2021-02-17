@@ -14,10 +14,6 @@ public class ClericTest {
         cleric = new Cleric("Max", 100, 2, MedicineType.SHROOMS);
     }
 
-//    hasMedicineType
-//    canHeal
-//    canChangeMedicine
-
     @Test
     public void hasMedicineType(){
         assertEquals(MedicineType.SHROOMS, cleric.getMedicineType());

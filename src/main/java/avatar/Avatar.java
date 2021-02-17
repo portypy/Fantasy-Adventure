@@ -24,4 +24,12 @@ public abstract class Avatar {
     public int getCoinPurseCount(){
         return this.coinPurse;
     };
+
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
+    }
+
+    public void setCoinPurse(int coinPurse) {
+        this.coinPurse = coinPurse;
+    }
 }

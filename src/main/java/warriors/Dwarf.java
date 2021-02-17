@@ -18,7 +18,6 @@ public class Dwarf extends Avatar implements IWeapon {
     }
 
 
-
     public int attack() {
         return this.getWeaponType().getDamage();
     }
