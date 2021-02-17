@@ -1,8 +1,9 @@
 package healers;
 
 import avatar.Avatar;
+import avatar.IChangeHP;
 
-public class Cleric extends Avatar implements IHeal {
+public class Cleric extends Avatar implements IChangeHP {
 
     private MedicineType medicineType;
 
@@ -15,7 +16,7 @@ public class Cleric extends Avatar implements IHeal {
         return this.medicineType;
     }
 
-    public int heal() {
+    public int changeHP() {
         return this.medicineType.getHealValue();
     }
 

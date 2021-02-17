@@ -1,29 +1,35 @@
 package rooms;
 
-import avatar.Avatar;
+
+import avatar.IChangeHP;
 import enemy.Enemy;
-import warriors.Dwarf;
+import healers.Cleric;
+
+
+import java.util.ArrayList;
 
 public class Room {
-    private Avatar hero;
-    private Enemy enemy;
 
-    public Room(Avatar hero, Enemy enemy) {
-        this.hero = hero;
-        this.enemy = enemy;
+
+    private ArrayList<IChangeHP> heroes;
+    private ArrayList<Enemy> enemies;
+//    private ArrayList<Treasure> treasures;
+
+
+    public Room(ArrayList<IChangeHP> heroes, ArrayList<Enemy> enemies) {
+        this.heroes = heroes;
+        this.enemies = enemies;
     }
 
-    public Enemy getEnemy() {
-        return this.enemy;
-    }
-
-
-    public Avatar getHero() {
-        return this.hero;
-    }
-
-    public void attack(Dwarf hero, Enemy enemy) {
-        int damagePoints = hero.attack();
+    public void attack(IChangeHP hero, Enemy enemy) {
+        int damagePoints = hero.changeHP();
         enemy.removeHealthPoints(damagePoints);
+        int damageFromEnemy = enemy.getEnemyType().getAttackValue();
+        hero.removeHealthPoints(damageFromEnemy);
+    }
+
+    public void heal(Cleric cleric, IChangeHP hero){
+        int healPoints = cleric.changeHP();
+        hero.addHealthPoints(healPoints);
     }
 }

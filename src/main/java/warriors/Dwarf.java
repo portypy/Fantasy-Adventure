@@ -1,9 +1,10 @@
 package warriors;
 
 import avatar.Avatar;
+import avatar.IChangeHP;
 
 
-public class Dwarf extends Avatar implements IWeapon {
+public class Dwarf extends Avatar implements IChangeHP {
 
     private WeaponType weaponType;
 
@@ -18,7 +19,7 @@ public class Dwarf extends Avatar implements IWeapon {
     }
 
 
-    public int attack() {
+    public int changeHP() {
         return this.getWeaponType().getDamage();
     }
 

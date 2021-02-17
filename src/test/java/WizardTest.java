@@ -17,7 +17,7 @@ public class WizardTest {
     @Test
 //    THIS TEST MUST CHANGE TO TEST THAT WE CAN LOWER ENEMY HEALTH
     public void canGetSpellDamage(){
-        assertEquals(5, oz.castSpell());
+        assertEquals(5, oz.changeHP());
     }
 
     @Test

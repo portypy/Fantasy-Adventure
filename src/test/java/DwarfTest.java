@@ -37,7 +37,7 @@ public class DwarfTest {
 
         @Test
         public void canAttack(){
-                assertEquals(9, dwarf.attack());
+                assertEquals(9, dwarf.changeHP());
         }
 
         @Test

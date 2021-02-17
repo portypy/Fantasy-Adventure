@@ -1,9 +1,10 @@
 package magicians;
 
 import avatar.Avatar;
+import avatar.IChangeHP;
 
 
-public class Wizard extends Avatar implements ISpells {
+public class Wizard extends Avatar implements IChangeHP {
 
     SpellType spellType;
     MythicalCreatures mythicalCreature;
@@ -29,7 +30,7 @@ public class Wizard extends Avatar implements ISpells {
         this.mythicalCreature = mythicalCreature;
     }
 
-    public int castSpell(){
+    public int changeHP(){
         return getSpellType().getDamageValue();
     }
 

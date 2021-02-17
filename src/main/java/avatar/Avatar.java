@@ -16,7 +16,6 @@ public abstract class Avatar {
         return this.name;
     };
 
-
     public int getHealthPoints(){
         return this.healthPoints;
     };
@@ -32,9 +31,11 @@ public abstract class Avatar {
     public void removeHealthPoints(int damagePoints) {
         this.healthPoints -= damagePoints;
     }
+
     public void addCoinPurse(int coinPurse) {
         this.coinPurse += coinPurse;
     }
+
     public void removeCoinPurse(int coinPurse) {
         this.coinPurse -= coinPurse;
     }
