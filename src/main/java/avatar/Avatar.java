@@ -32,11 +32,11 @@ public abstract class Avatar {
         this.healthPoints -= damagePoints;
     }
 
-    public void addCoinPurse(int coinPurse) {
-        this.coinPurse += coinPurse;
+    public void addCoins(int coins) {
+        this.coinPurse += coins;
     }
 
-    public void removeCoinPurse(int coinPurse) {
-        this.coinPurse -= coinPurse;
+    public void removeCoins(int coins) {
+        this.coinPurse -= coins;
     }
 }

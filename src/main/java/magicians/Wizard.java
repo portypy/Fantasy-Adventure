@@ -28,12 +28,13 @@ public class Wizard extends Avatar implements IChangeHP {
         this.mythicalCreature = mythicalCreature;
     }
 
-    public int changeHP(){
-        return (getSpellType().getDamageValue())+(getMythicalCreature().getAttackValue());
-    }
-
     public void changeSpellType(SpellType selectSpell) {
         this.spellType = selectSpell;
+    }
+
+    // Override original Avatar methods for wizard to use creature
+    public int changeHP(){
+        return (getSpellType().getDamageValue())+(getMythicalCreature().getAttackValue());
     }
 
     public void removeHealthPoints(int damagePoints) {

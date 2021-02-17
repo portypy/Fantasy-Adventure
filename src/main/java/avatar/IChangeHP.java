@@ -5,4 +5,5 @@ public interface IChangeHP {
 
      void removeHealthPoints(int points);
      void addHealthPoints(int points);
+     void addCoins(int coins);
 }
