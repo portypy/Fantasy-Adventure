@@ -23,6 +23,11 @@ public class Dwarf extends Avatar implements IChangeHP {
         return this.getWeaponType().getDamage();
     }
 
+    @Override
+    public String whatInHand() {
+        return this.getWeaponType().getName();
+    }
+
 
     public void changeWeapon(WeaponType selectWeapon) {
         this.weaponType = selectWeapon;

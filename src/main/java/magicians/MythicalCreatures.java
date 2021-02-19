@@ -2,7 +2,7 @@ package magicians;
 
 public enum MythicalCreatures {
     OGRE("Shrek", 30, 10, 3),
-    DRAGON("Smaug", 50, 15, 5),
+    DRAGON("Dragon", 50, 15, 5),
     ENT("Treebeard", 40, 20, 10);
 
     private final String name;

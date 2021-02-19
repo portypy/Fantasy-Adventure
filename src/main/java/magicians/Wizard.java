@@ -42,4 +42,8 @@ public class Wizard extends Avatar implements IChangeHP {
     public void removeHealthPoints(int damagePoints) {
         this.healthPoints -= (damagePoints - getMythicalCreature().getDefBonus());
     }
+
+    public String whatInHand() {
+        return this.getSpellType().name() + " and his " + this.getMythicalCreature().getName() + " attacks as well";
+    }
 }
