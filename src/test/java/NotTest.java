@@ -1,6 +1,4 @@
 import avatar.IChangeHP;
-import enemy.Enemy;
-import enemy.EnemyType;
 import healers.Cleric;
 import healers.MedicineType;
 import magicians.MythicalCreatures;
@@ -19,9 +17,6 @@ public class NotTest {
     Dwarf dwarf;
     Cleric cleric;
     Wizard oz;
-//    Enemy enemy;
-//    Enemy enemy2;
-//    ArrayList<Enemy> enemies;
 
 
     @Before
@@ -29,21 +24,11 @@ public class NotTest {
         dwarf = new Dwarf("Thorin", 90, 10, WeaponType.AXE);
         cleric = new Cleric("Medicus", 100, 10, MedicineType.SHROOMS);
         oz = new Wizard("Oz", 100, 10, SpellType.FIREBALL, MythicalCreatures.DRAGON);
-//        enemy = new Enemy("Smaug", 50, 1, EnemyType.TROLL);
-//        enemy2 = new Enemy("Harkdh", 60, 2, EnemyType.GRIFFIN);
-//        enemy2 = EnemyType.getRandomEnemy();
         ArrayList<IChangeHP> heroes = new ArrayList<>();
-//        ArrayList<Enemy> enemies = new ArrayList<>();
-
         heroes.add(dwarf);
-//        enemies.add(enemy2);
-//        enemies.add(enemy);
-//        enemies.add()
         heroes.add(cleric);
         heroes.add(oz);
         room = new Room(heroes);
-//        room.getEnemies() = room.getRandomEnemyList();
-
     }
 
     @Test

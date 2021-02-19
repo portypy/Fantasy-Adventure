@@ -6,7 +6,6 @@ public enum EnemyType {
     WEREWOLF(20, "Werewolf", 30, 20),
     GRIFFIN(20, "Griffin",35, 25);
 
-
     private final int attackValue;
     private final String name;
     private final int healthPoints;
@@ -19,7 +18,6 @@ public enum EnemyType {
         this.coins = coins;
     }
 
-    
     public int getAttackValue(){
         return this.attackValue;
     }

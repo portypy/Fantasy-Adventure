@@ -33,13 +33,4 @@ public class Enemy {
     public void removeHealthPoints(int damagePoints) {
         this.healthPoints -= damagePoints;
     }
-
-//    public Enemy getRandomEnemy(){
-//        EnemyType enemyType = EnemyType.getRandomEnemy();
-//        String name = enemyType.getName();
-//        int healthPoints = enemyType.getHealthPoints();
-//        int coins = enemyType.getCoins();
-//        Enemy enemy = new Enemy(name, healthPoints, coins, enemyType);
-//        return enemy;
-//    }
 }

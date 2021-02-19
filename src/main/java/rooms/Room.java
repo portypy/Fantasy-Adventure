@@ -17,7 +17,7 @@ public class Room {
     public Room(ArrayList<IChangeHP> heroes) {
         this.heroes = heroes;
         this.coins = ThreadLocalRandom.current().nextInt(7,44);
-        this.enemies = new ArrayList<>();
+//        this.enemies = new ArrayList<>();
         this.enemies = getRandomEnemyList();
 
     }
@@ -51,7 +51,6 @@ public class Room {
             System.out.printf("You killed all enemies, treasures are yours! There are "
                     + coinsPerHero + " golden coins for every Hero.");
 
-
             // canExit = true -> go to next room
         } else {
             System.out.println("Enemy still in the room, attack again!");
@@ -79,7 +78,10 @@ public class Room {
     }
     public ArrayList<Enemy> getRandomEnemyList(){
         ArrayList<Enemy> randomEnemyList = new ArrayList<>();
-        randomEnemyList.add(this.getRandomEnemy());
+        int numberOfEnemies = ThreadLocalRandom.current().nextInt(1,4);
+        for (int i = 0; i < numberOfEnemies ; i++) {
+            randomEnemyList.add(this.getRandomEnemy());
+        }
         return randomEnemyList;
     }
 
