@@ -7,13 +7,15 @@ import healers.Cleric;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static java.lang.Math.*;
+
 public class Room {
 
     private ArrayList<IChangeHP> heroes;
     private ArrayList<Enemy> enemies;
     private int coins;
 
-    public Room(ArrayList<IChangeHP> heroes, ArrayList<Enemy> enemies) {
+    public Room(ArrayList<IChangeHP> heroes, ArrayList<Enemy> enemies, int coins) {
         this.heroes = heroes;
         this.enemies = enemies;
         this.coins = ThreadLocalRandom.current().nextInt(7,44);
@@ -22,15 +24,28 @@ public class Room {
     public void attack(IChangeHP hero, Enemy enemy) {
         int damagePoints = hero.changeHP();
         enemy.removeHealthPoints(damagePoints);
-        // If enemy is still alive then will counterattack
+        String heroAttackMessage = String.format(hero.getName() + " attacks " + enemy.getName() + "! " + enemy.getName() + " lost " + damagePoints + "HP");
+        System.out.println(heroAttackMessage);
+        // If enemy is alive then will counterattack
             if (enemy.getHealthPoints() > 0) {
                 int damageFromEnemy = enemy.getEnemyType().getAttackValue();
                 hero.removeHealthPoints(damageFromEnemy);
+                String enemyAttackMessage = String.format(enemy.getName() + " counter attacks! " + hero.getName() + " lost " + (damageFromEnemy - hero.getDefBonus())+ "HP");
+                System.out.println(enemyAttackMessage);
+            } else {
+                //Dead enemy removed from the room and his money taken
+                int loot = enemy.getCoinPurseCount();
+                hero.addCoins(loot);
+                int indexOfDeadEnemy = enemies.indexOf(enemy);
+                enemies.remove(indexOfDeadEnemy);
             }
         if (enemies.size() == 0){
-            System.out.println("You killed all enemies, treasures are yours!");
-            //Share of the treasure for each character
-            heroes.forEach(man -> hero.addCoins(Math.floorDiv(heroes.size(), this.coins)));
+            //Share of the treasure for each hero
+            int coinsPerHero = Math.floorDiv(this.coins, heroes.size());
+            heroes.forEach(man -> man.addCoins(coinsPerHero));
+            System.out.println(String.format("You killed all enemies, treasures are yours! There are " + coinsPerHero + " coins for every Hero."));
+
+            // canExit = true -> go to next room
         } else {
             System.out.println("Enemy still in the room, attack again!");
         }
@@ -39,5 +54,7 @@ public class Room {
     public void heal(Cleric cleric, IChangeHP hero){
         int healPoints = cleric.changeHP();
         hero.addHealthPoints(healPoints);
+        String heroHealedMessage = String.format(cleric.getName() + " healed " + hero.getName() + "! "+ hero.getName() + " gains " + (healPoints)+ "HP");
+        System.out.println(heroHealedMessage);
     }
 }

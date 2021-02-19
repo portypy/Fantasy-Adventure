@@ -23,6 +23,7 @@ public class RoomTest {
     Cleric cleric;
     Wizard oz;
     Enemy enemy;
+    Enemy enemy2;
 
     @Before
     public void before(){
@@ -30,13 +31,14 @@ public class RoomTest {
         cleric = new Cleric("Max", 100, 2, MedicineType.SHROOMS);
         oz = new Wizard("Oz", 100, 10, SpellType.FIREBALL, MythicalCreatures.OGRE);
         enemy = new Enemy("Donald", 100, 1, EnemyType.POLITICIAN);
+        enemy2 = new Enemy("Harkdh", 15, 2, EnemyType.TROLL);
         ArrayList<IChangeHP>heroes = new ArrayList<>();
         ArrayList<Enemy>enemies = new ArrayList<>();
         heroes.add(dwarf);
-        enemies.add(enemy);
+        enemies.add(enemy2);
         heroes.add(cleric);
         heroes.add(oz);
-        room = new Room(heroes, enemies);
+        room = new Room(heroes, enemies, 29);
 
     }
 
@@ -59,6 +61,13 @@ public class RoomTest {
         room.attack(oz, enemy);
          assertEquals(85, enemy.getHealthPoints());
          assertEquals(93, oz.getHealthPoints());
+}
+
+@Test
+    public void canKillEnemy(){
+    room.attack(oz, enemy2);
+    assertEquals(0, enemy2.getHealthPoints());
+    assertEquals(100, oz.getHealthPoints());
 }
 
 }

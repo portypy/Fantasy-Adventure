@@ -15,7 +15,9 @@ public class Wizard extends Avatar implements IChangeHP {
         this.mythicalCreature = mythicalCreature;
 
     }
-
+    public int getDefBonus() {
+        return mythicalCreature.getDefBonus();
+    }
     public SpellType getSpellType() {
         return spellType;
     }
