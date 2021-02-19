@@ -6,6 +6,7 @@ import magicians.SpellType;
 import magicians.Wizard;
 import org.junit.Before;
 import org.junit.Test;
+import rooms.Pyramid;
 import rooms.Room;
 import warriors.Dwarf;
 import warriors.WeaponType;
@@ -13,10 +14,13 @@ import warriors.WeaponType;
 import java.util.ArrayList;
 
 public class NotTest {
+    Pyramid pyramid;
     Room room;
     Dwarf dwarf;
     Cleric cleric;
     Wizard oz;
+    String ANSI_RESET = "\u001B[0m";
+    String ANSI_RED = "\u001B[31m";
 
 
     @Before
@@ -29,11 +33,14 @@ public class NotTest {
         heroes.add(cleric);
         heroes.add(oz);
         room = new Room(heroes);
+        pyramid = new Pyramid(room);
+
     }
 
     @Test
     public void thisIsNotTestThisIsRealFightLoL() {
-
+        System.out.printf( ANSI_RED + "Wizard, Cleric and Dwarf entering pyramid, looking for a gold, they are attacked by " + this.room.getEnemies().size() + " creatures in the chamber." +  ANSI_RESET);
+        System.out.println("");
         while (room.getEnemies().size() > 0) {
 
             for (int x = 0; x < room.getEnemies().size(); x++)  // attacking enemies one by one (smart;)
@@ -41,8 +48,7 @@ public class NotTest {
                 while (room.getEnemies().size() > 0 && this.room.getEnemies().get(x).getHealthPoints() > 0) {
                     for (int i = 0; i < room.getHeroes().size(); i++) {        //every hero takes his turn to attack
                         if (this.room.getEnemies().size() == 0) { break; }
-
-                        if (this.room.getHeroes().get(i).getHealthPoints() < 90){ this.room.heal( cleric, this.room.getHeroes().get(i)); }
+                          if (this.room.getHeroes().get(i).getHealthPoints() < 90){ this.room.heal( cleric, this.room.getHeroes().get(i)); }
                             if (this.room.getEnemies().get(x).getHealthPoints() <= 0) { break; }     //prevent continuing loop while enemy killed
                                 if (this.room.getHeroes().get(i).canFight())                        // cleric wont fight
                         this.room.attack(this.room.getHeroes().get(i), this.room.getEnemies().get(x));
