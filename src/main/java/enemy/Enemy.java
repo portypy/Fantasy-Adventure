@@ -1,17 +1,45 @@
 package enemy;
 
-import avatar.Avatar;
 
-public class Enemy extends Avatar {
-
+public class Enemy {
+    private String name;
     private EnemyType enemyType;
+    int healthPoints;
+    int coinPurse;
 
     public Enemy(String name, int healthPoints, int coinPurse, EnemyType enemyType) {
-        super(name, healthPoints, coinPurse);
+        this.name = name;
+        this.healthPoints = healthPoints;
+        this.coinPurse = coinPurse;
         this.enemyType = enemyType;
     }
 
-    public EnemyType getEnemyType(){
+    public String getName() {
+        return name;
+    }
+
+    public int getHealthPoints() {
+        return healthPoints;
+    }
+
+    public int getCoinPurseCount() {
+        return coinPurse;
+    }
+
+    public EnemyType getEnemyType() {
         return this.enemyType;
     }
+
+    public void removeHealthPoints(int damagePoints) {
+        this.healthPoints -= damagePoints;
+    }
+
+//    public Enemy getRandomEnemy(){
+//        EnemyType enemyType = EnemyType.getRandomEnemy();
+//        String name = enemyType.getName();
+//        int healthPoints = enemyType.getHealthPoints();
+//        int coins = enemyType.getCoins();
+//        Enemy enemy = new Enemy(name, healthPoints, coins, enemyType);
+//        return enemy;
+//    }
 }

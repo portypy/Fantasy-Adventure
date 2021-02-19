@@ -2,6 +2,7 @@ package rooms;
 
 import avatar.IChangeHP;
 import enemy.Enemy;
+import enemy.EnemyType;
 import healers.Cleric;
 
 import java.util.ArrayList;
@@ -13,10 +14,12 @@ public class Room {
     private ArrayList<Enemy> enemies;
     private int coins;
 
-    public Room(ArrayList<IChangeHP> heroes, ArrayList<Enemy> enemies) {
+    public Room(ArrayList<IChangeHP> heroes) {
         this.heroes = heroes;
-        this.enemies = enemies;
         this.coins = ThreadLocalRandom.current().nextInt(7,44);
+        this.enemies = new ArrayList<>();
+        this.enemies = getRandomEnemyList();
+
     }
 
     public void attack(IChangeHP hero, Enemy enemy) {
@@ -36,6 +39,8 @@ public class Room {
                         //Dead enemy removed from the room and his money taken
                         int loot = enemy.getCoinPurseCount();
                         hero.addCoins(loot);
+                        System.out.printf(enemy.getName() + " was killed and his coins taken by " + hero.getName());
+                        System.out.println(" ");
                         int indexOfDeadEnemy = enemies.indexOf(enemy);
                         enemies.remove(indexOfDeadEnemy);
                     }
@@ -43,8 +48,9 @@ public class Room {
             //Share of the treasure for each hero
             int coinsPerHero = Math.floorDiv(this.coins, heroes.size());
             heroes.forEach(man -> man.addCoins(coinsPerHero));
-            System.out.println(String.format("You killed all enemies, treasures are yours! There are "
-                    + coinsPerHero + " coins for every Hero."));
+            System.out.printf("You killed all enemies, treasures are yours! There are "
+                    + coinsPerHero + " golden coins for every Hero.");
+
 
             // canExit = true -> go to next room
         } else {
@@ -56,11 +62,25 @@ public class Room {
     public void heal(Cleric cleric, IChangeHP hero){
         int healPoints = cleric.changeHP();
         hero.addHealthPoints(healPoints);
-//        String heroHealedMessage = String.format(cleric.getName() + " healed " + hero.getName() + "! "
-//                + hero.getName() + " gains " + (healPoints)+ "HP");
-        System.out.println(String.format(cleric.getName() + " healed " + hero.getName() + "! "
+        System.out.println(String.format(cleric.getName() + " healed " + hero.getName() + "! For 5 coins "
                 + hero.getName() + " gains " + (healPoints)+ "HP"));
-//        System.out.println("done");
+        System.out.println(" ");
+        hero.removeCoins(5);
+        cleric.addCoins(5);
+
+    }
+    public Enemy getRandomEnemy(){
+        EnemyType enemyType = EnemyType.getRandomEnemyType();
+        String name = enemyType.getName();
+        int healthPoints = enemyType.getHealthPoints();
+        int coins = enemyType.getCoins();
+        Enemy enemy = new Enemy(name, healthPoints, coins, enemyType);
+        return enemy;
+    }
+    public ArrayList<Enemy> getRandomEnemyList(){
+        ArrayList<Enemy> randomEnemyList = new ArrayList<>();
+        randomEnemyList.add(this.getRandomEnemy());
+        return randomEnemyList;
     }
 
     public ArrayList<IChangeHP> getHeroes() {

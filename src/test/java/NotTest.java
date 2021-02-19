@@ -19,25 +19,30 @@ public class NotTest {
     Dwarf dwarf;
     Cleric cleric;
     Wizard oz;
-    Enemy enemy;
-    Enemy enemy2;
+//    Enemy enemy;
+//    Enemy enemy2;
+//    ArrayList<Enemy> enemies;
 
 
     @Before
     public void before() {
         dwarf = new Dwarf("Thorin", 90, 10, WeaponType.AXE);
-        cleric = new Cleric("Medicus", 100, 2, MedicineType.SHROOMS);
+        cleric = new Cleric("Medicus", 100, 10, MedicineType.SHROOMS);
         oz = new Wizard("Oz", 100, 10, SpellType.FIREBALL, MythicalCreatures.DRAGON);
-        enemy = new Enemy("Smaug", 50, 1, EnemyType.POLITICIAN);
-        enemy2 = new Enemy("Harkdh", 60, 2, EnemyType.TROLL);
+//        enemy = new Enemy("Smaug", 50, 1, EnemyType.TROLL);
+//        enemy2 = new Enemy("Harkdh", 60, 2, EnemyType.GRIFFIN);
+//        enemy2 = EnemyType.getRandomEnemy();
         ArrayList<IChangeHP> heroes = new ArrayList<>();
-        ArrayList<Enemy> enemies = new ArrayList<>();
+//        ArrayList<Enemy> enemies = new ArrayList<>();
+
         heroes.add(dwarf);
-        enemies.add(enemy2);
-        enemies.add(enemy);
+//        enemies.add(enemy2);
+//        enemies.add(enemy);
+//        enemies.add()
         heroes.add(cleric);
         heroes.add(oz);
-        room = new Room(heroes, enemies);
+        room = new Room(heroes);
+//        room.getEnemies() = room.getRandomEnemyList();
 
     }
 
@@ -46,13 +51,15 @@ public class NotTest {
 
         while (room.getEnemies().size() > 0) {
 
-            for (int x = 0; x < room.getEnemies().size(); x++)  // Attacking enemies one by one (smart;)
+            for (int x = 0; x < room.getEnemies().size(); x++)  // attacking enemies one by one (smart;)
 
-                while (this.enemy.getHealthPoints() > 0) {
-                    for (int i = 0; i < room.getHeroes().size(); i++) {  //every hero takes his turn to attack
+                while (room.getEnemies().size() > 0 && this.room.getEnemies().get(x).getHealthPoints() > 0) {
+                    for (int i = 0; i < room.getHeroes().size(); i++) {        //every hero takes his turn to attack
+                        if (this.room.getEnemies().size() == 0) { break; }
+
                         if (this.room.getHeroes().get(i).getHealthPoints() < 90){ this.room.heal( cleric, this.room.getHeroes().get(i)); }
-                        if (this.enemy.getHealthPoints() <= 0) { break; } //prevent continuing loop while enemy killed
-                            if (this.room.getHeroes().get(i).canFight()) // Cleric wont fight
+                            if (this.room.getEnemies().get(x).getHealthPoints() <= 0) { break; }     //prevent continuing loop while enemy killed
+                                if (this.room.getHeroes().get(i).canFight())                        // cleric wont fight
                         this.room.attack(this.room.getHeroes().get(i), this.room.getEnemies().get(x));
                     }
             }

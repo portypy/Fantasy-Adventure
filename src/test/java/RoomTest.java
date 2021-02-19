@@ -7,7 +7,6 @@ import magicians.MythicalCreatures;
 import magicians.SpellType;
 import magicians.Wizard;
 import org.junit.Before;
-import org.junit.Test;
 import rooms.Room;
 import warriors.Dwarf;
 import warriors.WeaponType;
@@ -34,8 +33,8 @@ public class RoomTest {
         dwarf = new Dwarf("Hamlett", 90, 10, WeaponType.AXE);
         cleric = new Cleric("Max", 100, 2, MedicineType.SHROOMS);
         oz = new Wizard("Oz", 100, 10, SpellType.FIREBALL, MythicalCreatures.OGRE);
-        enemy = new Enemy("Donald", 60, 1, EnemyType.POLITICIAN);
-        enemy2 = new Enemy("Harkdh", 15, 2, EnemyType.TROLL);
+        enemy = new Enemy("Donald", 60, 1, EnemyType.TROLL);
+        enemy2 = new Enemy("Harkdh", 15, 2, EnemyType.GRIFFIN);
         ArrayList<IChangeHP> heroes = new ArrayList<>();
         ArrayList<Enemy> enemies = new ArrayList<>();
 //        ArrayList<Enemy> enemies2 = new ArrayList<>();
@@ -44,7 +43,7 @@ public class RoomTest {
         enemies.add(enemy);
 //        heroes.add(cleric);
         heroes.add(oz);
-        room = new Room(heroes, enemies);
+        room = new Room(heroes);
 //        room2 = new Room(heroes, enemies2);
 
     }
