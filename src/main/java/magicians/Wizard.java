@@ -34,6 +34,10 @@ public class Wizard extends Avatar implements IChangeHP {
         this.spellType = selectSpell;
     }
 
+    public Boolean canFight() {
+        return true;
+    }
+
     // Override original Avatar methods for wizard to use creature
     public int changeHP(){
         return (getSpellType().getDamageValue())+(getMythicalCreature().getAttackValue());

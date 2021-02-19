@@ -16,6 +16,10 @@ public class Cleric extends Avatar implements IChangeHP {
         return this.medicineType;
     }
 
+    public Boolean canFight() {
+        return false;
+    }
+
     public int changeHP() {
         return this.medicineType.getHealValue();
     }

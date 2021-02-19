@@ -56,9 +56,11 @@ public class Room {
     public void heal(Cleric cleric, IChangeHP hero){
         int healPoints = cleric.changeHP();
         hero.addHealthPoints(healPoints);
-        String heroHealedMessage = String.format(cleric.getName() + " healed " + hero.getName() + "! "
-                + hero.getName() + " gains " + (healPoints)+ "HP");
-        System.out.println(heroHealedMessage);
+//        String heroHealedMessage = String.format(cleric.getName() + " healed " + hero.getName() + "! "
+//                + hero.getName() + " gains " + (healPoints)+ "HP");
+        System.out.println(String.format(cleric.getName() + " healed " + hero.getName() + "! "
+                + hero.getName() + " gains " + (healPoints)+ "HP"));
+//        System.out.println("done");
     }
 
     public ArrayList<IChangeHP> getHeroes() {

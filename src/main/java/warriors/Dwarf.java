@@ -19,11 +19,14 @@ public class Dwarf extends Avatar implements IChangeHP {
     }
 
 
+    public Boolean canFight() {
+        return true;
+    }
+
     public int changeHP() {
         return this.getWeaponType().getDamage();
     }
 
-    @Override
     public String whatInHand() {
         return this.getWeaponType().getName();
     }

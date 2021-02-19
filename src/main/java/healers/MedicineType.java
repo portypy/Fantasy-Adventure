@@ -1,8 +1,8 @@
 package healers;
 
 public enum MedicineType {
-    SHROOMS("Shrooms", 50),
-    POTIONS("Potions", 20);
+    SHROOMS("Shrooms", 10),
+    POTIONS("Potions", 5);
 
     private final String name;
     private final int healValue;

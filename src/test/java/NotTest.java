@@ -16,15 +16,12 @@ import java.util.ArrayList;
 
 public class NotTest {
     Room room;
-    Room room2;
     Dwarf dwarf;
     Cleric cleric;
     Wizard oz;
     Enemy enemy;
     Enemy enemy2;
-//    ArrayList<Enemy> enemies;
-//    ArrayList<Enemy> enemies2;
-//    ArrayList<IChangeHP> heroes;
+
 
     @Before
     public void before() {
@@ -32,13 +29,13 @@ public class NotTest {
         cleric = new Cleric("Medicus", 100, 2, MedicineType.SHROOMS);
         oz = new Wizard("Oz", 100, 10, SpellType.FIREBALL, MythicalCreatures.DRAGON);
         enemy = new Enemy("Smaug", 50, 1, EnemyType.POLITICIAN);
-        enemy2 = new Enemy("Harkdh", 30, 2, EnemyType.TROLL);
+        enemy2 = new Enemy("Harkdh", 60, 2, EnemyType.TROLL);
         ArrayList<IChangeHP> heroes = new ArrayList<>();
         ArrayList<Enemy> enemies = new ArrayList<>();
         heroes.add(dwarf);
         enemies.add(enemy2);
         enemies.add(enemy);
-//        heroes.add(cleric);
+        heroes.add(cleric);
         heroes.add(oz);
         room = new Room(heroes, enemies);
 
@@ -49,12 +46,14 @@ public class NotTest {
 
         while (room.getEnemies().size() > 0) {
 
-            for (int x = 0; x < room.getEnemies().size(); x++)
+            for (int x = 0; x < room.getEnemies().size(); x++)  // Attacking enemies one by one (smart;)
 
                 while (this.enemy.getHealthPoints() > 0) {
-                    for (int i = 0; i < room.getHeroes().size(); i++) {
-                        if (this.enemy.getHealthPoints() <= 0) { break; }
-                        room.attack(room.getHeroes().get(i), room.getEnemies().get(x));
+                    for (int i = 0; i < room.getHeroes().size(); i++) {  //every hero takes his turn to attack
+                        if (this.room.getHeroes().get(i).getHealthPoints() < 90){ this.room.heal( cleric, this.room.getHeroes().get(i)); }
+                        if (this.enemy.getHealthPoints() <= 0) { break; } //prevent continuing loop while enemy killed
+                            if (this.room.getHeroes().get(i).canFight()) // Cleric wont fight
+                        this.room.attack(this.room.getHeroes().get(i), this.room.getEnemies().get(x));
                     }
             }
 

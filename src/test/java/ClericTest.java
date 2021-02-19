@@ -21,7 +21,7 @@ public class ClericTest {
 
     @Test
     public void canHeal(){
-        assertEquals(50, cleric.changeHP());
+        assertEquals(10, cleric.changeHP());
     }
 
 
