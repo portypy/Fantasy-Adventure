@@ -61,12 +61,12 @@ public class Room {
     }
 
     public void heal(Cleric cleric, IChangeHP hero){
-        int healPoints = cleric.changeHP();
+        int healPoints = this.heroes.get(1).changeHP();
         hero.addHealthPoints(healPoints);
-        System.out.println(String.format(ANSI_GREEN  + cleric.getName() + " use " + cleric.getMedicineType() + " and healed " + hero.getName() + "! For 5 coins " + hero.getName() + " gains " + (healPoints)+ "HP" + ANSI_RESET));
+        System.out.println(String.format(ANSI_GREEN  + this.heroes.get(1).getName() + " use " + this.heroes.get(1).getMedicineType() + " and healed " + hero.getName() + "! For 5 coins " + hero.getName() + " gains " + (healPoints)+ "HP" + ANSI_RESET));
         System.out.println(" ");
         hero.removeCoins(5);
-        cleric.addCoins(5);
+        this.heroes.get(1).addCoins(5);
 
     }
     public Enemy getRandomEnemy(){

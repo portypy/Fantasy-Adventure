@@ -1,5 +1,7 @@
 package avatar;
 
+import healers.MedicineType;
+
 public interface IChangeHP {
 
      Boolean canFight();
@@ -10,6 +12,7 @@ public interface IChangeHP {
      void removeHealthPoints(int points);
      void addHealthPoints(int points);
      void addCoins(int coins);
+     default MedicineType getMedicineType(){return MedicineType.SHROOMS;};
      String getName();
      String whatInHand();
      default int getDefBonus() {
