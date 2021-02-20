@@ -24,7 +24,6 @@ public class Cleric extends Avatar implements IChangeHP {
         return this.medicineType.getHealValue();
     }
 
-
     public String whatInHand() {
         return null;
     }

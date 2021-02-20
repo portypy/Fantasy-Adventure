@@ -16,18 +16,13 @@ public class Pyramid {
     Cleric cleric;
     Wizard oz;
 
-
-    public Pyramid() {
-
-    }
-
-
+    public Pyramid(){}
 
     public Room createNewRoom(){
         ArrayList<IChangeHP> heroes = new ArrayList<>();
-        dwarf = new Dwarf("Thorin", 90, 10, WeaponType.AXE);
-        cleric = new Cleric("Medicus", 100, 10, MedicineType.SHROOMS);
-        oz = new Wizard("Oz", 100, 10, SpellType.FIREBALL, MythicalCreatures.DRAGON);
+        dwarf = new Dwarf("Thorin", 90, 0, WeaponType.AXE);
+        cleric = new Cleric("Medicus", 100, 0, MedicineType.SHROOMS);
+        oz = new Wizard("Oz", 100, 0, SpellType.FIREBALL, MythicalCreatures.DRAGON);
         heroes.add(dwarf);
         heroes.add(cleric);
         heroes.add(oz);
@@ -35,7 +30,4 @@ public class Pyramid {
         return room;
     }
 
-//    public int getGold(){
-//
-//    }
 }

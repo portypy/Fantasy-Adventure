@@ -10,21 +10,20 @@ public class NotTest {
     String ANSI_RESET = "\u001B[0m";
     String ANSI_RED = "\u001B[31m";
     int roomCounter = 0;
-
+    int totalCoinsLooted = 0;
 
     @Before
     public void before() {
         pyramid = new Pyramid();
-
-
     }
 
     @Test
     public void thisIsNotTestThisIsRealFightLoL() {
-        System.out.printf(ANSI_RED + "Wizard, Cleric and Dwarf entering pyramid, looking for a gold." + ANSI_RESET);
+        System.out.printf(ANSI_RED + "Wizard, Cleric and Dwarf enter the pyramid, looking for gold." + ANSI_RESET);
         do {
             Room room = pyramid.createNewRoom();
             roomCounter += 1;
+            System.out.println("");
             System.out.printf(ANSI_RED + "They are attacked by " + room.getEnemies().size() + " creatures in the chamber." + ANSI_RESET);
             System.out.println("");
             while (room.getEnemies().size() > 0) {
@@ -47,7 +46,9 @@ public class NotTest {
                         }
                     }
 
-            }
-        } while ( roomCounter < 3 );
+            } totalCoinsLooted += room.getCoinsLootedInThisRoom();
+        } while ( totalCoinsLooted < 200 );  // explore more rooms until heroes have 200 golden coins
+        System.out.println(ANSI_RED + "Wizard, Cleric and Dwarf have decided to leave the pyramid, as they looted enough golden coins." + ANSI_RESET);
+
     }
 }
