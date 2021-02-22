@@ -40,7 +40,7 @@ public class NotTest {
                             }
                             if (room.getEnemies().get(x).getHealthPoints() <= 0) {
                                 break;
-                            }     //prevent continuing loop while enemy killed
+                            }     //prevents continuing loop while enemy killed
                             if (room.getHeroes().get(i).canFight())                        // cleric wont fight
                                 room.attack(room.getHeroes().get(i), room.getEnemies().get(x));
                         }
