@@ -1,5 +1,5 @@
 # Fantasy-Adventure-Java
-CodeClan Java lab end up us a fun, turn based fantasy game played in the terminal.
+The CodeClan Java lab ended up us a fun, turn based fantasy game played in the terminal.
 
 
 
